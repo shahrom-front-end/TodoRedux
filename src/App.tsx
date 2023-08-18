@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { RootState } from "./store/store";
 import { ITodo, addTodo, deleteTodo , completeTodo } from "./reducers/todoSlice";
 
+
+
 const App = () => {
   const todos: ITodo[] = useSelector((state: RootState) => state.todos);
   const dispatch = useDispatch();
+
+  const [modal, setModal]=useState<boolean>(false);
+  const [txt, setTxt]=useState<string>("");
+  const [idx, setIdx]=useState<number>(0)
+
 
 
   const handleAdd = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,10 +38,17 @@ const App = () => {
         <div key={todo.id} className="flex gap-4">
           <h1 style={{textDecoration:todo.complete?"line-through":"none", color:todo.complete ? "red" :"black"}}>{todo.title}</h1>
           <button onClick={() => dispatch(deleteTodo(todo.id))} className="bg-[red] text-white p-[5px] rounded-md">Delete</button> 
+          <button className="bg-[#2edcff] text-white p-[5px] rounded-md" onClick={()=>setModal(true)}>Edit</button>
           <input type="checkbox" onClick={()=>dispatch(completeTodo(todo.id))} />
           
         </div>
       ))}
+      {
+        modal ? (<form>
+          <input type="text" value={txt} className="border p-[5px]" placeholder="edit" />
+          <button type="submit">edit</button>
+        </form>):null
+      }
     </div>
   );
 };
