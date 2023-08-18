@@ -1,48 +1,57 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface ITodo {
-  id:number,
-  title:string,
-  complete:boolean
+  id: number;
+  title: string;
+  complete: boolean;
 }
 
 const initialState: ITodo[] = [
   {
     id: 1,
-    title: 'Mirzoali',
-    complete: false
+    title: "Mirzoali",
+    complete: false,
   },
   {
     id: 2,
-    title: 'Navruz',
-    complete: false
+    title: "Navruz",
+    complete: false,
   },
 ];
 
 export const slice = createSlice({
-  name: 'todos',
+  name: "todos",
   initialState,
   reducers: {
-    addTodo: (state:ITodo[], action) => {
+    addTodo: (state: ITodo[], action) => {
       const { id, text } = action.payload;
       state.push({ id, title: text, complete: false });
     },
-    deleteTodo: (state, action:PayloadAction<number>) => {
-      const id:number = action.payload;
+    deleteTodo: (state, action: PayloadAction<number>) => {
+      const id: number = action.payload;
       return state.filter((e) => e.id !== id);
     },
-    completeTodo : (state,action:PayloadAction<number>) =>{
-      const id:number = action.payload;
-      state.map((e)=>{
-        if(e.id===id){
-          e.complete =! e.complete
+    completeTodo: (state, action: PayloadAction<number>) => {
+      const id: number = action.payload;
+      state.map((e) => {
+        if (e.id === id) {
+          e.complete = !e.complete;
         }
-        return e 
-      })
-    }
-  }
-})
+        return e;
+      });
+    },
+    editTodo: (state: ITodo[], action) => {
+      const { idx, txt } = action.payload;
+      state.map((todo: ITodo) => {
+        if (todo.id === idx) {
+          todo.title = txt;
+        }
+        return todo;
+      });
+    },
+  },
+});
 
-export const {addTodo, deleteTodo , completeTodo} = slice.actions
+export const { addTodo, deleteTodo, completeTodo, editTodo } = slice.actions;
 
-export default slice.reducer
+export default slice.reducer;
