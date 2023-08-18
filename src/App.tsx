@@ -31,12 +31,12 @@ const App = () => {
     }
   };
 
-  // const editTodo = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const txt = event.currentTarget.edit.value;
-  //   dispatch(editTodo({ idx, txt }));
-  //   setModal(false);
-  // };
+  const editTodo = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const txt = event.currentTarget.edit.value;
+    // dispatch(editTodo({ idx, txt }));
+    // setModal(false);
+  };
 
   return (
     <div>
