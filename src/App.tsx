@@ -44,10 +44,12 @@ const App = () => {
         </div>
       ))}
       {
-        modal ? (<form>
-          <input type="text" value={txt} className="border p-[5px]" placeholder="edit" />
+        modal ? (
+        <form onSubmit={editTodo}>
+          <input type="text" value={txt} onChange={(event:React.ChangeEvent<HTMLInputElement>)=>setTxt(event.target.value)} className="border p-[5px]" placeholder="edit" />
           <button type="submit">edit</button>
-        </form>):null
+        </form>
+        ):null
       }
     </div>
   );
