@@ -1,0 +1,42 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@700&display=swap');
+body{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.053)rgba(0, 0, 0, 0.053)),url(./assets/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+    background-image: url(./assets/bg2.jpg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+.font{
+  font-family: 'Lobster', cursive;
+}
+.font2{
+  font-family: 'Montserrat', sans-serif;
+}
+.btn{
+  cursor: pointer;
+  background: green;
+  padding: 7px;
+  border-radius: 5px;
+  color: white;
+}
+input{
+  height: 3vh;
+}
+.checkbox{
+  accent-color: red;
+  cursor: pointer;
+  width: 7%;
+}
+.delete{
+  cursor: pointer;
+  background-color: red;
+ padding: 10px;
+ color: white;
+ border-radius: 5px;
+}
+.cursor{
+  cursor: pointer;
+} */
